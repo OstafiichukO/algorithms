@@ -1,49 +1,18 @@
-function cycleSort(array) {
-  // loop from the beginning of the array to the second to last item
-  for (let currentIndex = 0; currentIndex < array.length - 1; currentIndex++) {
-    // save the value of the item at the currentIndex
-    let item = array[currentIndex]
+// console.log(isNaN("Hello"))
+// console.log(isNaN(345))
+// console.log(isNaN('1'))
+// console.log(isNaN(true))
+// console.log(isNaN(false))
+// console.log(isNaN(undefined))
 
-    let currentIndexCopy = currentIndex
-    // loop through all indexes that proceed the currentIndex
-    for (let i = currentIndex + 1; i < array.length; i++)
-      if (array[i] < item)
-        currentIndexCopy++
+const arrayData = [7, "correct", 0, false, 9, NaN, ""]
 
-    // if currentIndexCopy has not changed, the item at the currentIndex is already in the correct currentIndexCopy
-    if (currentIndexCopy == currentIndex)
-      continue
+const notFalsy = []
 
-    // skip duplicates
-    while (item == array[currentIndexCopy])
-      currentIndexCopy++
-
-    // swap
-    let temp = array[currentIndexCopy]
-    array[currentIndexCopy] = item
-    item = temp
-
-    // repeat above steps as long as we can find values to swap
-    while (currentIndexCopy != currentIndex) {
-      currentIndexCopy = currentIndex
-      // loop through all indexes that proceed the currentIndex
-      for (let i = currentIndex + 1; i < array.length; i++)
-        if (array[i] < item)
-          currentIndexCopy++
-
-      // skip duplicates
-      while (item == array[currentIndexCopy])
-        currentIndexCopy++
-
-      // swap
-      temp = array[currentIndexCopy]
-      array[currentIndexCopy] = item
-      item = temp
-    }
+for (let i = 0; i < arrayData.length; i++) {
+  if (!!arrayData[i]) {
+    notFalsy.push(arrayData[i])
   }
 }
 
-let array = [12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8]
-cycleSort(array)
-console.log(array)
-// alert(array)
+console.log(notFalsy)
